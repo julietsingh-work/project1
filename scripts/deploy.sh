@@ -34,7 +34,8 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: ${LAMBDA_FUNCTION_NAME}-${BRANCH}
-      Handler: lambda_function.lambda_handler
+      Handler: index.handler
+      Runtime: nodejs14.x
       CodeUri: s3://${S3_BUCKET}/${BRANCH}/${LAMBDA_FUNCTION_NAME}_v${TARGET_LAMBDA_FUNCTION_VERSION}.zip
       AutoPublishAlias: default
       Timeout: 30
