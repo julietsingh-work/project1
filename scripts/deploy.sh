@@ -24,8 +24,16 @@ else
 fi
 
 TARGET_LAMBDA_FUNCTION_CODE="${LAMBDA_FUNCTION_NAME}_v${TARGET_LAMBDA_FUNCTION_VERSION}.zip"
-zip -rj ${TARGET_LAMBDA_FUNCTION_CODE} function/*
+zip -rj ${TARGET_LAMBDA_FUNCTION_CODE} functions/*
+echo "After zip $?"
 aws s3 cp ${TARGET_LAMBDA_FUNCTION_CODE} s3://${S3_BUCKET}/${BRANCH}/
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -ne 0 ]; then
+  echo "S3 cp done"
+else 
+  echo "S3 cp failed"
+fi
+
 
 cat >template.yaml <<EOM
 AWSTemplateFormatVersion: '2010-09-09'
