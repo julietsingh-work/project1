@@ -30,7 +30,7 @@ EXIT_STATUS=$?
 if [ $EXIT_STATUS -eq 0 ]; then
   echo "S3 cp done"
 else 
-  echo "S3 cp failed"
+  echo "S3 cp failed!!"
 fi
 
 
