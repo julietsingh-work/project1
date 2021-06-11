@@ -27,7 +27,7 @@ zip -rj ${TARGET_LAMBDA_FUNCTION_CODE} functions/*
 echo "After zip $?"
 aws s3 cp ${TARGET_LAMBDA_FUNCTION_CODE} s3://${S3_BUCKET}/${BRANCH}/
 EXIT_STATUS=$?
-if [ $EXIT_STATUS -ne 0 ]; then
+if [ $EXIT_STATUS -eq 0 ]; then
   echo "S3 cp done"
 else 
   echo "S3 cp failed"
