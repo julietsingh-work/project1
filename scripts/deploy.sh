@@ -52,3 +52,4 @@ Resources:
         Type: ${LAMBDA_DEPLOYMENT_PREFERENCE}
 EOM
 cat template.yaml
+echo "End of deploy.sh!!"
