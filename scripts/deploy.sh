@@ -1,7 +1,6 @@
 echo "S3 Bucket: $S3_BUCKET"
 echo "Lambda Function Name: $LAMBDA_FUNCTION_NAME"
 echo "Lambda Deployment Preference: $LAMBDA_DEPLOYMENT_PREFERENCE"
-BRANCH="dev"
 echo "GitHub Branch: $BRANCH"
 echo " Start Build !!"
 if [ "$BRANCH" == "master" ]; then
@@ -28,10 +27,10 @@ zip -rj ${TARGET_LAMBDA_FUNCTION_CODE} functions/*
 echo "After zip $?"
 aws s3 cp ${TARGET_LAMBDA_FUNCTION_CODE} s3://${S3_BUCKET}/${BRANCH}/
 EXIT_STATUS=$?
-if [ $EXIT_STATUS -ne 0 ]; then
+if [ $EXIT_STATUS -eq 0 ]; then
   echo "S3 cp done"
 else 
-  echo "S3 cp failed"
+  echo "S3 cp failed!!"
 fi
 
 
@@ -53,3 +52,4 @@ Resources:
         Type: ${LAMBDA_DEPLOYMENT_PREFERENCE}
 EOM
 cat template.yaml
+echo "End of deploy.sh!!"
