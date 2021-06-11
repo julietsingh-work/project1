@@ -1,7 +1,6 @@
 echo "S3 Bucket: $S3_BUCKET"
 echo "Lambda Function Name: $LAMBDA_FUNCTION_NAME"
 echo "Lambda Deployment Preference: $LAMBDA_DEPLOYMENT_PREFERENCE"
-BRANCH="dev"
 echo "GitHub Branch: $BRANCH"
 echo " Start Build !!"
 if [ "$BRANCH" == "master" ]; then
